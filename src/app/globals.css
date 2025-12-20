@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --gold: #D4AF37;
+  --gold-light: #F4E4BC;
+  --gold-dark: #B8960C;
+  --white: #FFFFFF;
+  --cream: #FFF8E7;
+  --text-dark: #2D2D2D;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFF8E7 100%);
+  min-height: 100vh;
+  color: var(--text-dark);
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary-gold to-primary-gold-light text-white font-bold py-4 px-8 rounded-full shadow-gold hover:shadow-gold-lg transition-all duration-300 transform hover:scale-105;
+  }
+
+  .btn-secondary {
+    @apply border-2 border-primary-gold text-primary-gold font-bold py-4 px-8 rounded-full hover:bg-primary-gold hover:text-white transition-all duration-300;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl shadow-lg p-6 border border-primary-gold/20;
+  }
+
+  .card-gold {
+    @apply bg-gradient-to-br from-white to-accent-cream rounded-2xl shadow-gold p-6 border border-primary-gold/30;
+  }
+
+  .section-title {
+    @apply text-2xl md:text-3xl font-serif font-bold text-center mb-8;
+    background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 50%, var(--gold-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 border-2 border-primary-gold/30 rounded-xl focus:border-primary-gold focus:outline-none focus:ring-2 focus:ring-primary-gold/20 transition-all bg-white;
+  }
+
+  .zodiac-icon {
+    @apply w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-primary-gold to-primary-gold-light text-white text-xl;
+  }
+}
+
+/* Star animation for background */
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.star {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--gold);
+  border-radius: 50%;
+  animation: twinkle 3s infinite;
+  opacity: 0.3;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.2); }
+}
+
+/* Gold shimmer effect */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(212, 175, 55, 0) 0%,
+    rgba(212, 175, 55, 0.3) 50%,
+    rgba(212, 175, 55, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Loading animation */
+.loading-spinner {
+  border: 4px solid var(--gold-light);
+  border-top: 4px solid var(--gold);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Horoscope chart styling */
+.horoscope-chart {
+  background: radial-gradient(circle, #FFF8E7 0%, #FFFFFF 70%);
+  border: 3px solid var(--gold);
+  border-radius: 50%;
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+}
+
+/* Result card styling */
+.result-highlight {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(255, 255, 255, 0.9) 100%);
+  border-left: 4px solid var(--gold);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold-light);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+}
